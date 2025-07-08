@@ -5,24 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laracasts - Learn Vue 3</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        html, body {
+            height: 100vh;
+        }
+        body {
+            display: grid;
+            place-items: center;
+        }
+        .text-red {
+            color: red;
+        }
+        .text-green {
+            color: green;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
-        <p>
-            <input type="text" v-model="greeting">
-        </p>
-        
-        <p>
-            {{ greeting }} ({{ greeting.length }})
-        </p>
+        <button v-bind:class="active ? 'text-green' : 'text-red'" @click="toggle">Click me 👆🏻</button>
     </div>
         
     <script>
     Vue.createApp({
         data() {
             return {
-                greeting: 'Hello world!',
+                active: false,
             };
+        },
+
+        methods: {
+            toggle() {
+                this.active = !this.active
+            } 
         }
     }).mount('#app');
     </script>
