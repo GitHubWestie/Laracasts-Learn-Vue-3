@@ -7,21 +7,14 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="h-full grid place-items-center">
+<body class="h-full grid place-items-center bg-slate-500">
     <div id="app">
-        <app-button>Hey 👋🏻</app-button>
+        <app-button :processing="false">Hey 👋🏻</app-button>
     </div>
     <script type="module">
-        import AppButton from "./js/components/AppButton.js";
+        import App from "./js/components/App.js";
 
-        let app = {
-            components: {
-                'app-button': AppButton,
-
-                }
-            }
-
-        Vue.createApp(app).mount('#app')
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>
