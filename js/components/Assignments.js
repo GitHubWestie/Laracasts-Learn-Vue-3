@@ -1,8 +1,10 @@
 import AssignmentList from "./AssignmentList.js"
+import AssignmentCreate from "./AssignmentCreate.js"
 
 export default {
     components: {
         AssignmentList,
+        AssignmentCreate
     },
 
     template: `
@@ -13,10 +15,7 @@ export default {
             <!-- Completed Assignments -->
             <AssignmentList title="Completed Assignments" :assignments="filters.completed" />
 
-            <form @submit.prevent="add">
-                <input v-model="newAssignment" type="text" placeholder="Add an assignment" class="border border-gray-600 rounded-md px-2 py-1">
-                <button type="submit" class="border border-gray-600 rounded-md px-3 py-1 ml-1">Add</button>
-            </form>
+            <AssignmentCreate @add="add" />
         </section>
 
     `,
@@ -43,12 +42,12 @@ export default {
     },
 
     methods: {
-        add() {
+        add(assignment) {
             this.assignments.push({
-                name: this.newAssignment,
+                name: assignment,
                 complete: false,
                 id: this.assignments.length + 1,
-            })
+            });
         }
     }
 }
