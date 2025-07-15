@@ -1,8 +1,10 @@
-import Assignment from "./Assignment.js"
+import Assignment from "./Assignment.js";
+import AssignmentTags from "./AssignmentTags.js";
 
 export default {
     components: {
         Assignment,
+        AssignmentTags,
     },
 
     template: `
@@ -12,16 +14,7 @@ export default {
                 <span class="border border-gray-600 rounded-full px-2">{{ assignments.length }}</span>
             </div>
 
-            <div class="text-xs space-x-2 my-4">
-                <span
-                    v-for="tag in tags"
-                    @click="currentTag = tag"
-                    class="border border-gray-600 rounded-full px-2 py-1 hover:cursor-pointer hover:bg-gray-600 transition-colors duration-300"
-                    :class="currentTag === tag ? 'bg-pink-600 border-white/75 hover:bg-pink-600': ''"
-                    >
-                    {{ tag }}
-                </span>
-            </div>
+            <AssignmentTags :tags="tags" @update="currentTag = $event" :currentTag="currentTag" />
 
             <ul class="border border-gray-600 rounded-md px-4 py-3">
                 <Assignment
