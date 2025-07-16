@@ -14,7 +14,10 @@ export default {
                 <span class="border border-gray-600 rounded-full px-2">{{ assignments.length }}</span>
             </div>
 
-            <AssignmentTags :tags="tags" @update="currentTag = $event" :currentTag="currentTag" />
+            <AssignmentTags
+                :tags="tags"
+                v-model="currentTag"
+                />
 
             <ul class="border border-gray-600 rounded-md px-4 py-3">
                 <Assignment
