@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div class="text-xs space-x-2 my-4">
+        <div class="flex flex-wrap gap-2 text-xs my-4">
             <span
                 v-for="tag in tags"
                 @click="$emit('update:modelValue', tag)"

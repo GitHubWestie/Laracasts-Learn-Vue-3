@@ -8,25 +8,30 @@ export default {
     },
 
     template: `
-        <section class="space-y-6">
+        <section class="flex gap-6 space-y-6">
             <!-- Incomplete Asignments -->
-            <AssignmentList title="Assignments" :assignments="filters.incomplete" />
+            <AssignmentList title="Assignments" :assignments="filters.incomplete">
+                <AssignmentCreate @add="add" />
+            </AssignmentList>
 
             <!-- Completed Assignments -->
-            <AssignmentList title="Completed Assignments" :assignments="filters.completed" />
+            <AssignmentList
+                v-if="showCompleted"
+                title="Complete"
+                :assignments="filters.completed"
+                canToggle
+                @toggle="showCompleted = !showCompleted"
+                />
 
-            <AssignmentCreate @add="add" />
         </section>
 
     `,
 
     data() {
         return {
-            assignments: [
-
-            ],
-
+            assignments: [],
             newAssignment: '',
+            showCompleted: true,
         }
     },
 
