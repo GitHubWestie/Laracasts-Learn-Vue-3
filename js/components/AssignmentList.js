@@ -1,14 +1,16 @@
 import Assignment from "./Assignment.js";
 import AssignmentTags from "./AssignmentTags.js";
+import Panel from "./Panel.js";
 
 export default {
     components: {
         Assignment,
         AssignmentTags,
+        Panel,
     },
 
     template: `
-        <section v-show="assignments.length" class="w-65">
+        <Panel v-show="assignments.length" class="w-65">
             <div class="flex justify-between items-start mb-2">
                 <div class="flex gap-1">
                     <h2 class="font-bold">{{ title }}</h2>
@@ -32,7 +34,7 @@ export default {
             </ul>
 
             <slot></slot>
-        </section>
+        </Panel>
     `,
 
     props: {
