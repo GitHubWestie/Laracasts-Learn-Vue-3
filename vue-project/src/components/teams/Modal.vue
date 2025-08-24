@@ -5,20 +5,28 @@ defineProps({
 </script>
 
 <template>
-    <div v-if="show" class="modal-mask">
-        <div class="modal-container">
-    
-            <div>
-                <slot>default body</slot>
+    <Transition
+        enter-from-class="opacity-0"
+        enter-to-class="opacity-100"
+        enter-active-class="transition duration-300"
+        leave-from-class="opacity-100"
+        leave-to-class="opacity-0"
+        leave-active-class="transition duration-100"
+    >
+        <div v-if="show" class="modal-mask">
+            <div class="modal-container">
+                <div>
+                    <slot>default body</slot>
+                </div>
+                
+                <footer class="modal-footer">
+                    <button @click="$emit('close')">
+                        <slot name="footer">Close</slot>
+                    </button>
+                </footer>
             </div>
-    
-            <footer class="modal-footer">
-                <button @click="$emit('close')">
-                    <slot name="footer">Close</slot>
-                </button>
-            </footer>
         </div>
-    </div>
+    </Transition>
 </template>
 
 <style>
