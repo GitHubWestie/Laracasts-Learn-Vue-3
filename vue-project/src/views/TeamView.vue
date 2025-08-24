@@ -1,24 +1,23 @@
 <script setup>
-import { computed } from 'vue';
-import team from "@/team.json"
-
+import { useTeamsStore } from '@/store/TeamsStore';
 import TeamHeader from '@/components/teams/TeamHeader.vue';
 import TeamMembers from '@/components/teams/TeamMembers.vue';
 import TeamFooter from '@/components/teams/TeamFooter.vue';
 
-const remainingSpots = computed(()=> {
-    return team.spots - team.members.length
-})
+const team = useTeamsStore();
+team.fill();
 
-console.log(remainingSpots)
+// const remainingSpots = computed(()=> {
+//     return team.spots - team.members.length
+// })
 </script>
 
 <template>
-    <TeamHeader :team="team" :remainingSpots="remainingSpots" />
+    <TeamHeader />
 
     <div class="place-self-center flex flex-col gap-y-3">
-        <TeamMembers :team="team" :remainingSpots="remainingSpots" />
+        <TeamMembers />
     </div>
 
-    <TeamFooter :team="team" />
+    <TeamFooter />
 </template>

@@ -1,8 +1,6 @@
 <script setup>
-defineProps({
-    team: Object,
-    remainingSpots: Number
-})
+import { useTeamsStore } from '@/store/TeamsStore';
+const team = useTeamsStore();
 </script>
 
 <template>
